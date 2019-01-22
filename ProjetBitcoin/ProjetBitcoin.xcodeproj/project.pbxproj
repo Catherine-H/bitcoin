@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4A2F887AE051849D044800BC /* Pods_ProjetBitcoin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C55941100553C1E55385CBF2 /* Pods_ProjetBitcoin.framework */; };
+		BECEA2BB21F74A5A00AAD62E /* ApiCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEA2BA21F74A5A00AAD62E /* ApiCall.swift */; };
+		BECEA2C021F7537000AAD62E /* CurrencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEA2BF21F7537000AAD62E /* CurrencyModel.swift */; };
 		EC05588E21F713FA00CB9D99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC05588D21F713FA00CB9D99 /* AppDelegate.swift */; };
 		EC05589021F713FA00CB9D99 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC05588F21F713FA00CB9D99 /* ViewController.swift */; };
 		EC05589321F713FA00CB9D99 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC05589121F713FA00CB9D99 /* Main.storyboard */; };
@@ -18,6 +20,8 @@
 /* Begin PBXFileReference section */
 		5DE93107D778D806EFB104FD /* Pods-ProjetBitcoin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjetBitcoin.release.xcconfig"; path = "Pods/Target Support Files/Pods-ProjetBitcoin/Pods-ProjetBitcoin.release.xcconfig"; sourceTree = "<group>"; };
 		A4638A2C1261C83B14E39CA5 /* Pods-ProjetBitcoin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjetBitcoin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ProjetBitcoin/Pods-ProjetBitcoin.debug.xcconfig"; sourceTree = "<group>"; };
+		BECEA2BA21F74A5A00AAD62E /* ApiCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiCall.swift; sourceTree = "<group>"; };
+		BECEA2BF21F7537000AAD62E /* CurrencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyModel.swift; sourceTree = "<group>"; };
 		C55941100553C1E55385CBF2 /* Pods_ProjetBitcoin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProjetBitcoin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC05588A21F713FA00CB9D99 /* ProjetBitcoin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjetBitcoin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC05588D21F713FA00CB9D99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +53,30 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		BECEA2BC21F74A7400AAD62E /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				BECEA2BA21F74A5A00AAD62E /* ApiCall.swift */,
+			);
+			path = Api;
+			sourceTree = "<group>";
+		};
+		BECEA2BD21F74A9400AAD62E /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				EC05588F21F713FA00CB9D99 /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		BECEA2BE21F7535C00AAD62E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BECEA2BF21F7537000AAD62E /* CurrencyModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		CF3C71EE32A75F189D6449CA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -78,8 +106,10 @@
 		EC05588C21F713FA00CB9D99 /* ProjetBitcoin */ = {
 			isa = PBXGroup;
 			children = (
+				BECEA2BE21F7535C00AAD62E /* Model */,
+				BECEA2BD21F74A9400AAD62E /* ViewControllers */,
+				BECEA2BC21F74A7400AAD62E /* Api */,
 				EC05588D21F713FA00CB9D99 /* AppDelegate.swift */,
-				EC05588F21F713FA00CB9D99 /* ViewController.swift */,
 				EC05589121F713FA00CB9D99 /* Main.storyboard */,
 				EC05589421F713FB00CB9D99 /* Assets.xcassets */,
 				EC05589621F713FB00CB9D99 /* LaunchScreen.storyboard */,
@@ -209,6 +239,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC05589021F713FA00CB9D99 /* ViewController.swift in Sources */,
+				BECEA2BB21F74A5A00AAD62E /* ApiCall.swift in Sources */,
+				BECEA2C021F7537000AAD62E /* CurrencyModel.swift in Sources */,
 				EC05588E21F713FA00CB9D99 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,20 +8,46 @@
 
 import UIKit
 
-class ViewController: UIViewController   {
-    let currency = ["Red","Yellow","Green","Blue"]
-
+class ViewController: UIViewController  {
     @IBOutlet weak var datePicker1: UIDatePicker!
     @IBOutlet weak var datePicker2: UIDatePicker!
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var listButton: UIButton!
     @IBOutlet weak var graphButton: UIButton!
+    
+    var currency: [String] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        ApiCall.GetCurrencyCurrency {[weak self](response) in
+            switch response{
+            case .success(let data):
+                do{
+                    print("switch")
+                    let decoder = JSONDecoder()
+                    print("switch")
+                    let result = try decoder.decode([CurrencyModel].self, from : data)
+                    //print(currency[1].currency)
+                    for value in result{
+                        if let currency = value.currency {
+                            self?.currency.append(currency)
+                        }
+                        print(self?.currency)
+                    }
+                    self?.pickerView.reloadAllComponents()
+                }catch (let error){
+                   print(error.localizedDescription)
+                }
+                break
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    
         
         pickerView.delegate = self
         pickerView.dataSource = self
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
 
