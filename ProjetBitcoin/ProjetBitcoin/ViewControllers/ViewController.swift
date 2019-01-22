@@ -16,6 +16,8 @@ class ViewController: UIViewController  {
     @IBOutlet weak var graphButton: UIButton!
     
     var currency: [String] = []
+    var selectedDate1 = Date()
+    var selectedDate2 = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +46,7 @@ class ViewController: UIViewController  {
             }
         }
     
-        
+
         pickerView.delegate = self
         pickerView.dataSource = self
         
@@ -57,12 +59,20 @@ class ViewController: UIViewController  {
     }
 
     @IBAction func valueChangedDatePicker1(_ sender: Any) {
+        datePicker1.datePickerMode = UIDatePickerMode.date
+        selectedDate1=datePicker1.date
+        print(selectedDate1)
+        
     }
     
     @IBAction func valueChangedDatePicker2(_ sender: Any) {
+        datePicker2.datePickerMode = UIDatePickerMode.date
+        selectedDate2=datePicker2.date
+        print(selectedDate2)
     }
     
     @IBAction func tapListButton(_ sender: Any) {
+        self.performSegue(withIdentifier: "showListe", sender: nil)
     }
     
     @IBAction func tapGraphButton(_ sender: Any) {

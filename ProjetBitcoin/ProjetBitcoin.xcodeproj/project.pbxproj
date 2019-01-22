@@ -15,6 +15,7 @@
 		EC05589321F713FA00CB9D99 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC05589121F713FA00CB9D99 /* Main.storyboard */; };
 		EC05589521F713FB00CB9D99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC05589421F713FB00CB9D99 /* Assets.xcassets */; };
 		EC05589821F713FB00CB9D99 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC05589621F713FB00CB9D99 /* LaunchScreen.storyboard */; };
+		EC0558A421F7717100CB9D99 /* ListeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0558A321F7717100CB9D99 /* ListeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		EC05589421F713FB00CB9D99 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EC05589721F713FB00CB9D99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EC05589921F713FB00CB9D99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EC0558A321F7717100CB9D99 /* ListeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				EC05588F21F713FA00CB9D99 /* ViewController.swift */,
+				EC0558A321F7717100CB9D99 /* ListeViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -192,15 +195,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-ProjetBitcoin-checkManifestLockResult.txt",
 			);
@@ -214,15 +213,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ProjetBitcoin/Pods-ProjetBitcoin-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 			);
@@ -239,6 +234,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC05589021F713FA00CB9D99 /* ViewController.swift in Sources */,
+				EC0558A421F7717100CB9D99 /* ListeViewController.swift in Sources */,
 				BECEA2BB21F74A5A00AAD62E /* ApiCall.swift in Sources */,
 				BECEA2C021F7537000AAD62E /* CurrencyModel.swift in Sources */,
 				EC05588E21F713FA00CB9D99 /* AppDelegate.swift in Sources */,
