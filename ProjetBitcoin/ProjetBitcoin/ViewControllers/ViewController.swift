@@ -99,7 +99,7 @@ class ViewController: UIViewController  {
                 break
             case "showChart":
                 if let destinationDetailVC = segue.destination as?
-                    ListeViewController {
+                    ChartViewController {
                     destinationDetailVC.priceModels = priceModels
                 }
                 

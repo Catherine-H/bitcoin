@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="h10-6a-SzZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="h10-6a-SzZ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -184,28 +183,31 @@
             </objects>
             <point key="canvasLocation" x="321" y="90"/>
         </scene>
-        <!--View Controller-->
+        <!--Chart View Controller-->
         <scene sceneID="t4H-k7-VAb">
             <objects>
-                <viewController id="zIg-93-I3w" sceneMemberID="viewController">
+                <viewController id="zIg-93-I3w" customClass="ChartViewController" customModule="ProjetBitcoin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PwQ-C2-ZPx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vrs-3D-MPY">
-                                <rect key="frame" x="0.0" y="32" width="375" height="667"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vrs-3D-MPY" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="37.5" y="199" width="300" height="333.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="vrs-3D-MPY" firstAttribute="centerY" secondItem="shH-sx-mcB" secondAttribute="centerY" id="MKy-sE-hCA"/>
-                            <constraint firstItem="vrs-3D-MPY" firstAttribute="height" secondItem="PwQ-C2-ZPx" secondAttribute="height" id="Ocd-16-u5O"/>
-                            <constraint firstItem="vrs-3D-MPY" firstAttribute="centerX" secondItem="shH-sx-mcB" secondAttribute="centerX" id="hm9-5a-AHN"/>
-                            <constraint firstItem="vrs-3D-MPY" firstAttribute="width" secondItem="PwQ-C2-ZPx" secondAttribute="width" id="zM4-1w-EGg"/>
+                            <constraint firstItem="vrs-3D-MPY" firstAttribute="height" secondItem="PwQ-C2-ZPx" secondAttribute="height" multiplier="0.5" id="Ian-Rl-rDr"/>
+                            <constraint firstItem="vrs-3D-MPY" firstAttribute="centerY" secondItem="shH-sx-mcB" secondAttribute="centerY" id="sGv-uT-OXF"/>
+                            <constraint firstItem="vrs-3D-MPY" firstAttribute="centerX" secondItem="shH-sx-mcB" secondAttribute="centerX" id="sTf-yc-C5g"/>
+                            <constraint firstItem="vrs-3D-MPY" firstAttribute="width" secondItem="PwQ-C2-ZPx" secondAttribute="width" multiplier="0.8" id="ubI-9g-ynV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="shH-sx-mcB"/>
                     </view>
+                    <connections>
+                        <outlet property="chtChart" destination="vrs-3D-MPY" id="G0j-T1-Sqc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yLz-Qe-Fo6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
