@@ -98,6 +98,7 @@ class ViewController: UIViewController  {
                 
                 break
             case "showChart":
+                //priceModels.sort { $0.currentDate! > $1.currentDate! }
                 if let destinationDetailVC = segue.destination as?
                     ChartViewController {
                     destinationDetailVC.priceModels = priceModels
@@ -144,10 +145,12 @@ class ViewController: UIViewController  {
                             //On a des price models de parsés, on peut continuer
                             self?.priceModels = arrayOfPriceModels
                         }
+                        
                     }
                     
                     
                 }
+                
                 break
             case .failure(let error):
                 print(error.localizedDescription)

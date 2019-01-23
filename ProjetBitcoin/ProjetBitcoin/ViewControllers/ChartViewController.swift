@@ -27,7 +27,8 @@ class ChartViewController: UIViewController {
     }
     
     func updateGraph() {
-    
+        //priceModels.sort { $0.currentDate! > $1.currentDate! }
+        var dateFormater: [String] = []
         for priceModel in priceModels {
             if let date = priceModel.currentDate {
                 let doubleDate = date.timeIntervalSince1970
@@ -38,8 +39,19 @@ class ChartViewController: UIViewController {
                 let data = LineChartData()
                 data.addDataSet(line1)
                 chtChart.data = data
+                chtChart.rightAxis.enabled = false
+                chtChart.xAxis.labelPosition = .bottom
+                //let date = NSDate(timeIntervalSince1970: <#T##TimeInterval#>)
+                let formatter = DateFormatter()
+                formatter.dateFormat = "yyyy-MM-dd"
+                let dateString = formatter.string(from: date)
+                print(dateString)
+                dateFormater.append(dateString)
+                
+                
             }
         }
+        chtChart.xAxis.valueFormatter = IndexAxisValueFormatter(values: dateFormater)
     }
 
     /*
