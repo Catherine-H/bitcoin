@@ -10,15 +10,18 @@ import UIKit
 
 class ListeViewController: UIViewController {
 
-    
+    var priceModels: [PriceModel] = []
     @IBOutlet weak var tableView: UITableView!
+    
     /*@IBOutlet weak var valeurlabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!*/
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        tableView.delegate = self
+        tableView.dataSource = self
         // Do any additional setup after loading the view.
+        tableView.reloadData()
     }
 
     
@@ -38,4 +41,27 @@ class ListeViewController: UIViewController {
     }
     */
 
+}
+
+
+extension ListeViewController: UITableViewDelegate {
+    
+}
+
+extension ListeViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1;
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return priceModels.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: DetailTableViewCell = tableView.dequeueReusableCell(withIdentifier: "detailCellId", for: indexPath) as! DetailTableViewCell
+        cell.fill(withString: priceModels[indexPath.row])
+        return cell
+        
+    }
+    
+    
+    
 }

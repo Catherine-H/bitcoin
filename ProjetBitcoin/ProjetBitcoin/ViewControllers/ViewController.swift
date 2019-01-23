@@ -83,7 +83,24 @@ class ViewController: UIViewController  {
     }
     
     @IBAction func tapListButton(_ sender: Any) {
-        self.performSegue(withIdentifier: "showListe", sender: nil)
+        
+        self.performSegue(withIdentifier: "showListe", sender: priceModels)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let identifier = segue.identifier {
+            switch identifier {
+            case "showListe":
+                if let destinationDetailVC = segue.destination as?
+                    ListeViewController {
+                    destinationDetailVC.priceModels = priceModels
+                }
+                
+                break
+            default:
+                break
+            }
+        }
     }
     
     @IBAction func tapGraphButton(_ sender: Any) {

@@ -17,6 +17,7 @@
 		EC05589521F713FB00CB9D99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC05589421F713FB00CB9D99 /* Assets.xcassets */; };
 		EC05589821F713FB00CB9D99 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC05589621F713FB00CB9D99 /* LaunchScreen.storyboard */; };
 		EC0558A421F7717100CB9D99 /* ListeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0558A321F7717100CB9D99 /* ListeViewController.swift */; };
+		EC4509A821F8AE8D00C4A89A /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4509A721F8AE8D00C4A89A /* DetailTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		EC05589721F713FB00CB9D99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EC05589921F713FB00CB9D99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC0558A321F7717100CB9D99 /* ListeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListeViewController.swift; sourceTree = "<group>"; };
+		EC4509A721F8AE8D00C4A89A /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 			children = (
 				EC05588F21F713FA00CB9D99 /* ViewController.swift */,
 				EC0558A321F7717100CB9D99 /* ListeViewController.swift */,
+				EC4509A721F8AE8D00C4A89A /* DetailTableViewCell.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 			files = (
 				EC05589021F713FA00CB9D99 /* ViewController.swift in Sources */,
 				EC0558A421F7717100CB9D99 /* ListeViewController.swift in Sources */,
+				EC4509A821F8AE8D00C4A89A /* DetailTableViewCell.swift in Sources */,
 				BECEA2BB21F74A5A00AAD62E /* ApiCall.swift in Sources */,
 				BECEA2C021F7537000AAD62E /* CurrencyModel.swift in Sources */,
 				EC05588E21F713FA00CB9D99 /* AppDelegate.swift in Sources */,
