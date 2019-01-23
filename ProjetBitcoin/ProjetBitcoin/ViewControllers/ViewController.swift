@@ -14,27 +14,33 @@ class ViewController: UIViewController  {
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var listButton: UIButton!
     @IBOutlet weak var graphButton: UIButton!
+    @IBOutlet weak var startSearch: UIButton!
     
     var currency: [String] = []
+    var priceModels: [PriceModel] = []
     var selectedDate1 = Date()
     var selectedDate2 = Date()
+    var money : String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        listButton.alpha = 0
+        graphButton.alpha = 0
+        
         ApiCall.GetCurrencyCurrency {[weak self](response) in
             switch response{
             case .success(let data):
                 do{
-                    print("switch")
                     let decoder = JSONDecoder()
-                    print("switch")
                     let result = try decoder.decode([CurrencyModel].self, from : data)
                     //print(currency[1].currency)
                     for value in result{
                         if let currency = value.currency {
                             self?.currency.append(currency)
                         }
-                        print(self?.currency)
+                       // print(self?.currency)
                     }
                     self?.pickerView.reloadAllComponents()
                 }catch (let error){
@@ -46,11 +52,6 @@ class ViewController: UIViewController  {
             }
         }
     
-
-        pickerView.delegate = self
-        pickerView.dataSource = self
-        
-        // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,7 +63,6 @@ class ViewController: UIViewController  {
         datePicker1.datePickerMode = UIDatePickerMode.date
         selectedDate1=datePicker1.date
         print(selectedDate1)
-        
     }
     
     @IBAction func valueChangedDatePicker2(_ sender: Any) {
@@ -76,6 +76,67 @@ class ViewController: UIViewController  {
     }
     
     @IBAction func tapGraphButton(_ sender: Any) {
+    }
+
+    @IBAction func tapStartSearch(_ sender: Any) {
+        let parameters = ["index": "index=[USD/CNY]", "start": selectedDate1, "end": "2019-01-21", "currency": "EUR"]
+        
+        ApiCall.getListByDateAndMoney(param: parameters) {[weak self] (result) in
+            switch result {
+            case .success(let dataAsJson):
+                //cast en dictionnaire
+                if let dataAsDictionary = dataAsJson as? [String:Any] {
+                    if let dataBPI = dataAsDictionary["bpi"] as? [String:Any] {
+                        //Cast les clés du dictionnaire en array de string
+                        let lazyMap = dataBPI.keys
+                        let allKeysFromDict: [String] = Array(lazyMap)
+                        var arrayOfPriceModels : [PriceModel] = []
+                        for key in allKeysFromDict {
+                            let dateFormatter = DateFormatter()
+                            dateFormatter.dateFormat = "YYYY-MM-dd"
+                            if let date = dateFormatter.date(from: key) {
+                                if let price = dataBPI[key] as? Double {
+                                    let priceModel: PriceModel = PriceModel(date: date, price: price)
+                                    arrayOfPriceModels.append(priceModel)
+                                    
+                                }
+                            }
+                        }
+                        if arrayOfPriceModels.count > 0 {
+                            //On a des price models de parsés, on peut continuer
+                            self?.priceModels = arrayOfPriceModels
+                            
+                        }
+                    }
+                    
+                    
+                }
+                break
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+        
+        
+        /*ApiCall.getListByDateAndMoney(param: parameters) {[weak self] (responseData) in
+            print("responseData" , responseData)
+            switch responseData{
+            case .success(let data):
+                print(data)
+                self?.listButton.alpha = 1
+                self?.graphButton.alpha = 1
+                do{
+                    let decoder = JSONDecoder()
+                    let result = try decoder.decode(PriceModel.self, from: data)
+                    //print(result.currentDate)
+                }catch (let error){
+                    print(error.localizedDescription)
+                }
+                break
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }*/
     }
 }
 
@@ -95,5 +156,9 @@ extension ViewController: UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return currency[row]
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        money = currency[row]
+        print(money)
     }
 }

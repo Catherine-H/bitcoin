@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4A2F887AE051849D044800BC /* Pods_ProjetBitcoin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C55941100553C1E55385CBF2 /* Pods_ProjetBitcoin.framework */; };
+		BE63C3CD21F870AE00BF6CC0 /* PriceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE63C3CC21F870AE00BF6CC0 /* PriceModel.swift */; };
 		BECEA2BB21F74A5A00AAD62E /* ApiCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEA2BA21F74A5A00AAD62E /* ApiCall.swift */; };
 		BECEA2C021F7537000AAD62E /* CurrencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEA2BF21F7537000AAD62E /* CurrencyModel.swift */; };
 		EC05588E21F713FA00CB9D99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC05588D21F713FA00CB9D99 /* AppDelegate.swift */; };
@@ -21,6 +22,7 @@
 /* Begin PBXFileReference section */
 		5DE93107D778D806EFB104FD /* Pods-ProjetBitcoin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjetBitcoin.release.xcconfig"; path = "Pods/Target Support Files/Pods-ProjetBitcoin/Pods-ProjetBitcoin.release.xcconfig"; sourceTree = "<group>"; };
 		A4638A2C1261C83B14E39CA5 /* Pods-ProjetBitcoin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjetBitcoin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ProjetBitcoin/Pods-ProjetBitcoin.debug.xcconfig"; sourceTree = "<group>"; };
+		BE63C3CC21F870AE00BF6CC0 /* PriceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceModel.swift; sourceTree = "<group>"; };
 		BECEA2BA21F74A5A00AAD62E /* ApiCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiCall.swift; sourceTree = "<group>"; };
 		BECEA2BF21F7537000AAD62E /* CurrencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyModel.swift; sourceTree = "<group>"; };
 		C55941100553C1E55385CBF2 /* Pods_ProjetBitcoin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProjetBitcoin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				BECEA2BF21F7537000AAD62E /* CurrencyModel.swift */,
+				BE63C3CC21F870AE00BF6CC0 /* PriceModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 				BECEA2BB21F74A5A00AAD62E /* ApiCall.swift in Sources */,
 				BECEA2C021F7537000AAD62E /* CurrencyModel.swift in Sources */,
 				EC05588E21F713FA00CB9D99 /* AppDelegate.swift in Sources */,
+				BE63C3CD21F870AE00BF6CC0 /* PriceModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

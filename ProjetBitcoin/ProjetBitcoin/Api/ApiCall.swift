@@ -12,10 +12,17 @@ import Alamofire
 class ApiCall {
     static func GetCurrencyCurrency(withCompletion completion:@escaping (Result<Data>) -> Void){
         Alamofire.request("https://api.coindesk.com/v1/bpi/supported-currencies.json").responseData { (response) in
-            print("vfdsbd" , response)
             completion(response.result)
         }
     }
+    
+    static func getListByDateAndMoney(param: [String:String], withCompletion completion:@escaping (Result<Any>) -> Void){
+        Alamofire.request("https://api.coindesk.com/v1/bpi/historical/close.json", method: .get, parameters: param).responseJSON { (responseData) in
+            completion(responseData.result)
+        }
+    }
+    
+    
 }
 
 
