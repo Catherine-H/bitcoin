@@ -20,10 +20,11 @@ class ViewController: UIViewController  {
     var priceModels: [PriceModel] = []
     var selectedDate1 = Date()
     var selectedDate2 = Date()
-    var dateString1: String = ""
-    var dateString2: String = ""
-    var money : String = ""
-  
+    var dateString1: String = "2018-12-12"
+    var dateString2: String = "2019-01-21"
+    var money : String = "AED"
+
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,7 +70,7 @@ class ViewController: UIViewController  {
         formatter.dateFormat = "yyyy-MM-dd"
         dateString1 = formatter.string(from: selectedDate1)
         
-        print(dateString1)
+        print("début" , dateString1)
     }
     
     @IBAction func valueChangedDatePicker2(_ sender: Any) {
@@ -78,7 +79,7 @@ class ViewController: UIViewController  {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         dateString2 = formatter.string(from: selectedDate2)
-        print(dateString2)
+        print("fin" , dateString2)
     }
     
     @IBAction func tapListButton(_ sender: Any) {
@@ -89,11 +90,13 @@ class ViewController: UIViewController  {
     }
 
     @IBAction func tapStartSearch(_ sender: Any) {
-        let parameters = ["index": "index=[USD/CNY]", "start": dateString1, "end": dateString2, "currency": money]
+        let parameters = ["start": dateString1, "end": dateString2, "currency": money]
         
         ApiCall.getListByDateAndMoney(param: parameters) {[weak self] (result) in
             switch result {
             case .success(let dataAsJson):
+                self?.listButton.alpha = 1
+                self?.graphButton.alpha = 1
                 //cast en dictionnaire
                 if let dataAsDictionary = dataAsJson as? [String:Any] {
                     if let dataBPI = dataAsDictionary["bpi"] as? [String:Any] {
