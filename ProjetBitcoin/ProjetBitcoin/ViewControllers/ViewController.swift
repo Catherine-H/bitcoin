@@ -97,6 +97,13 @@ class ViewController: UIViewController  {
                 }
                 
                 break
+            case "showChart":
+                if let destinationDetailVC = segue.destination as?
+                    ListeViewController {
+                    destinationDetailVC.priceModels = priceModels
+                }
+                
+                break
             default:
                 break
             }
@@ -104,7 +111,7 @@ class ViewController: UIViewController  {
     }
     
     @IBAction func tapGraphButton(_ sender: Any) {
-        self.performSegue(withIdentifier: "showChart", sender: Any)
+        self.performSegue(withIdentifier: "showChart", sender: priceModels)
     }
 
     @IBAction func tapStartSearch(_ sender: Any) {
