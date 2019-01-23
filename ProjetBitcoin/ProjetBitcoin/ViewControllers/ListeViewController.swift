@@ -49,6 +49,10 @@ extension ListeViewController: UITableViewDelegate {
 }
 
 extension ListeViewController: UITableViewDataSource {
+
+    
+    
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1;
     }
@@ -56,8 +60,8 @@ extension ListeViewController: UITableViewDataSource {
         return priceModels.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        priceModels.sort { $0.currentDate! > $1.currentDate! }
         let cell: DetailTableViewCell = tableView.dequeueReusableCell(withIdentifier: "detailCellId", for: indexPath) as! DetailTableViewCell
-
         cell.fill(withPriceModel: priceModels[indexPath.row])
         return cell
         
