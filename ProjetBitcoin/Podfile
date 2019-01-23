@@ -7,4 +7,5 @@ target 'ProjetBitcoin' do
 
   # Pods for ProjetBitcoin
 	pod 'Alamofire', '~> 4.7'
+	pod 'Charts'
 end
