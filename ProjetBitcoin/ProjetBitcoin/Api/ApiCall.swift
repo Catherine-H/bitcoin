@@ -18,6 +18,7 @@ class ApiCall {
     
     static func getListByDateAndMoney(param: [String:String], withCompletion completion:@escaping (Result<Any>) -> Void){
         Alamofire.request("https://api.coindesk.com/v1/bpi/historical/close.json", method: .get, parameters: param).responseJSON { (responseData) in
+            print("responseData" , responseData)
             completion(responseData.result)
         }
     }

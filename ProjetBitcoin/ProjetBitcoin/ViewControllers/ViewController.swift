@@ -20,7 +20,10 @@ class ViewController: UIViewController  {
     var priceModels: [PriceModel] = []
     var selectedDate1 = Date()
     var selectedDate2 = Date()
-    var money : String?
+    var dateString1: String = ""
+    var dateString2: String = ""
+    var money : String = ""
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,14 +64,21 @@ class ViewController: UIViewController  {
 
     @IBAction func valueChangedDatePicker1(_ sender: Any) {
         datePicker1.datePickerMode = UIDatePickerMode.date
-        selectedDate1=datePicker1.date
-        print(selectedDate1)
+        selectedDate1 = datePicker1.date
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        dateString1 = formatter.string(from: selectedDate1)
+        
+        print(dateString1)
     }
     
     @IBAction func valueChangedDatePicker2(_ sender: Any) {
         datePicker2.datePickerMode = UIDatePickerMode.date
         selectedDate2=datePicker2.date
-        print(selectedDate2)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        dateString2 = formatter.string(from: selectedDate2)
+        print(dateString2)
     }
     
     @IBAction func tapListButton(_ sender: Any) {
@@ -79,7 +89,7 @@ class ViewController: UIViewController  {
     }
 
     @IBAction func tapStartSearch(_ sender: Any) {
-        let parameters = ["index": "index=[USD/CNY]", "start": selectedDate1, "end": "2019-01-21", "currency": "EUR"]
+        let parameters = ["index": "index=[USD/CNY]", "start": dateString1, "end": dateString2, "currency": money]
         
         ApiCall.getListByDateAndMoney(param: parameters) {[weak self] (result) in
             switch result {
@@ -93,7 +103,7 @@ class ViewController: UIViewController  {
                         var arrayOfPriceModels : [PriceModel] = []
                         for key in allKeysFromDict {
                             let dateFormatter = DateFormatter()
-                            dateFormatter.dateFormat = "YYYY-MM-dd"
+                            dateFormatter.dateFormat = "yyyy-MM-dd"
                             if let date = dateFormatter.date(from: key) {
                                 if let price = dataBPI[key] as? Double {
                                     let priceModel: PriceModel = PriceModel(date: date, price: price)
@@ -105,7 +115,6 @@ class ViewController: UIViewController  {
                         if arrayOfPriceModels.count > 0 {
                             //On a des price models de parsés, on peut continuer
                             self?.priceModels = arrayOfPriceModels
-                            
                         }
                     }
                     
@@ -116,27 +125,6 @@ class ViewController: UIViewController  {
                 print(error.localizedDescription)
             }
         }
-        
-        
-        /*ApiCall.getListByDateAndMoney(param: parameters) {[weak self] (responseData) in
-            print("responseData" , responseData)
-            switch responseData{
-            case .success(let data):
-                print(data)
-                self?.listButton.alpha = 1
-                self?.graphButton.alpha = 1
-                do{
-                    let decoder = JSONDecoder()
-                    let result = try decoder.decode(PriceModel.self, from: data)
-                    //print(result.currentDate)
-                }catch (let error){
-                    print(error.localizedDescription)
-                }
-                break
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }*/
     }
 }
 
