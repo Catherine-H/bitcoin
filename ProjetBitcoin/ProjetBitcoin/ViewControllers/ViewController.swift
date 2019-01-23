@@ -104,6 +104,7 @@ class ViewController: UIViewController  {
     }
     
     @IBAction func tapGraphButton(_ sender: Any) {
+        self.performSegue(withIdentifier: "showChart", sender: Any)
     }
 
     @IBAction func tapStartSearch(_ sender: Any) {

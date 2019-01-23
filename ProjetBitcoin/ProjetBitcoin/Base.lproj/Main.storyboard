@@ -96,11 +96,12 @@
                         <outlet property="pickerView" destination="8QM-vY-7wh" id="SUf-Vi-01M"/>
                         <outlet property="startSearch" destination="5xX-R6-3Qi" id="Cob-Xh-Qfa"/>
                         <segue destination="epO-9z-bqP" kind="show" identifier="showListe" id="hCE-Ei-ZcL"/>
+                        <segue destination="zIg-93-I3w" kind="show" identifier="showChart" id="lMa-Xe-urH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-476" y="91"/>
+            <point key="canvasLocation" x="-486" y="91"/>
         </scene>
         <!--Liste View Controller-->
         <scene sceneID="ls3-ij-fk4">
@@ -182,6 +183,33 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sz6-H2-Xrl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="321" y="90"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="t4H-k7-VAb">
+            <objects>
+                <viewController id="zIg-93-I3w" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PwQ-C2-ZPx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vrs-3D-MPY">
+                                <rect key="frame" x="0.0" y="32" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="vrs-3D-MPY" firstAttribute="centerY" secondItem="shH-sx-mcB" secondAttribute="centerY" id="MKy-sE-hCA"/>
+                            <constraint firstItem="vrs-3D-MPY" firstAttribute="height" secondItem="PwQ-C2-ZPx" secondAttribute="height" id="Ocd-16-u5O"/>
+                            <constraint firstItem="vrs-3D-MPY" firstAttribute="centerX" secondItem="shH-sx-mcB" secondAttribute="centerX" id="hm9-5a-AHN"/>
+                            <constraint firstItem="vrs-3D-MPY" firstAttribute="width" secondItem="PwQ-C2-ZPx" secondAttribute="width" id="zM4-1w-EGg"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="shH-sx-mcB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yLz-Qe-Fo6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="320.80000000000001" y="889.20539730134942"/>
         </scene>
     </scenes>
 </document>
