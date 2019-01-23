@@ -15,6 +15,11 @@ class DetailTableViewCell: UITableViewCell {
     @IBOutlet weak var labelPrix: UILabel!
     
     func fill(withPriceModel pricemodel: PriceModel) {
-        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let curDate = formatter.string(from: pricemodel.currentDate!)
+        var price: String = String(format: "%.2f", pricemodel.price!)
+        labeldate.text = curDate
+        labelPrix.text = price
     }
 }

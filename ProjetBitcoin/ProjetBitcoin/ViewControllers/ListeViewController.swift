@@ -57,6 +57,7 @@ extension ListeViewController: UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: DetailTableViewCell = tableView.dequeueReusableCell(withIdentifier: "detailCellId", for: indexPath) as! DetailTableViewCell
+
         cell.fill(withPriceModel: priceModels[indexPath.row])
         return cell
         
