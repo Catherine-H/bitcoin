@@ -65,6 +65,10 @@ class ChartViewController: UIViewController {
         //chtChart.xAxis.valueFormatter = IndexAxisValueFormatter(values: dateFormater)
         chtChart.xAxis.valueFormatter = axisFormat
         chtChart.xAxis.labelRotationAngle = -45.0
+        line1.drawFilledEnabled = true
+        line1.fillColor = .red
+        line1.drawCirclesEnabled = false
+        line1.drawValuesEnabled = false
         
     }
     
