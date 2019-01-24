@@ -19,6 +19,7 @@ class ChartViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         axisFormat = self
+        self.title = "Cours du Bitcoin"
         updateGraph()
         
         // Do any additional setup after loading the view.

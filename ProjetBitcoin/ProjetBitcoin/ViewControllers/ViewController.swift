@@ -15,6 +15,8 @@ class ViewController: UIViewController  {
     @IBOutlet weak var listButton: UIButton!
     @IBOutlet weak var graphButton: UIButton!
     @IBOutlet weak var startSearch: UIButton!
+    @IBOutlet weak var dateDebut: UITextField!
+    @IBOutlet weak var dateFin: UITextField!
     
     var currency: [String] = []
     var priceModels: [PriceModel] = []
@@ -32,6 +34,7 @@ class ViewController: UIViewController  {
         pickerView.dataSource = self
         listButton.alpha = 0
         graphButton.alpha = 0
+        self.title = "Selection de dates"
         
         ApiCall.GetCurrencyCurrency {[weak self](response) in
             switch response{
@@ -63,7 +66,38 @@ class ViewController: UIViewController  {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func valueChangedDatePicker1(_ sender: Any) {
+
+    
+    @IBAction func tapDown(_ sender: UITextField) {
+        let datePickerView1: UIDatePicker = UIDatePicker()
+        datePickerView1.datePickerMode = UIDatePickerMode.date
+        sender.inputView = datePickerView1
+        datePickerView1.addTarget(self, action: #selector(handleDatePicker1(sender:)), for: .valueChanged)
+    }
+    
+    @objc func handleDatePicker1(sender: UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateString1 = dateFormatter.string(from: sender.date)
+        dateDebut.text = dateString1
+    }
+
+    @IBAction func tapDown2(_ sender: UITextField) {
+        let datePickerView2: UIDatePicker = UIDatePicker()
+        datePickerView2.datePickerMode = UIDatePickerMode.date
+        sender.inputView = datePickerView2
+        datePickerView2.addTarget(self, action: #selector(handleDatePicker2(sender:)), for: .valueChanged)
+    }
+    
+    @objc func handleDatePicker2(sender: UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateString2 = dateFormatter.string(from: sender.date)
+        dateFin.text = dateString2
+    }
+    
+
+    /*@IBAction func valueChangedDatePicker1(_ sender: Any) {
         datePicker1.datePickerMode = UIDatePickerMode.date
         selectedDate1 = datePicker1.date
         let formatter = DateFormatter()
@@ -80,7 +114,7 @@ class ViewController: UIViewController  {
         formatter.dateFormat = "yyyy-MM-dd"
         dateString2 = formatter.string(from: selectedDate2)
         print("fin" , dateString2)
-    }
+    }*/
     
     @IBAction func tapListButton(_ sender: Any) {
         

@@ -18,6 +18,7 @@ class ListeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Valeur du Bitcoin"
         tableView.delegate = self
         tableView.dataSource = self
         // Do any additional setup after loading the view.
