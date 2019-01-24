@@ -18,7 +18,7 @@ class DetailTableViewCell: UITableViewCell {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         let curDate = formatter.string(from: pricemodel.currentDate!)
-        var price: String = String(format: "%.2f", pricemodel.price!)
+        let price: String = String(format: "%.2f", pricemodel.price!)
         labeldate.text = curDate
         labelPrix.text = price
     }

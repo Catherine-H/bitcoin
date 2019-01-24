@@ -11,11 +11,13 @@ import UIKit
 class ListeViewController: UIViewController {
 
     var priceModels: [PriceModel] = []
+    var money: String = ""
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Valeur du Bitcoin"
+        self.title = "Valeur du Bitcoin " + money
         tableView.delegate = self
         tableView.dataSource = self
         tableView.reloadData()
@@ -24,22 +26,21 @@ class ListeViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
 }
 
 
-extension ListeViewController: UITableViewDelegate {
-    
-}
+extension ListeViewController: UITableViewDelegate {}
 
 extension ListeViewController: UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1;
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return priceModels.count
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         priceModels.sort { $0.currentDate! > $1.currentDate! }
         let cell: DetailTableViewCell = tableView.dequeueReusableCell(withIdentifier: "detailCellId", for: indexPath) as! DetailTableViewCell
@@ -47,5 +48,4 @@ extension ListeViewController: UITableViewDataSource {
         return cell
         
     }
-    
 }
