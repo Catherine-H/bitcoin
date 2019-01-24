@@ -30,6 +30,13 @@ class ChartViewController: UIViewController {
     }
     
     func updateGraph() {
+        priceModels.sort { (priceModel1, priceModel2) -> Bool in
+            if let date1 = priceModel1.currentDate, let date2 = priceModel2.currentDate {
+                return date1 < date2
+            }
+            return false
+        }
+        
         //priceModels.sort { $0.currentDate! > $1.currentDate! }
  
         for priceModel in priceModels {
