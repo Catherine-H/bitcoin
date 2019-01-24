@@ -13,35 +13,18 @@ class ListeViewController: UIViewController {
     var priceModels: [PriceModel] = []
     @IBOutlet weak var tableView: UITableView!
     
-    /*@IBOutlet weak var valeurlabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!*/
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Valeur du Bitcoin"
         tableView.delegate = self
         tableView.dataSource = self
-        // Do any additional setup after loading the view.
         tableView.reloadData()
     }
-
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 
@@ -51,9 +34,6 @@ extension ListeViewController: UITableViewDelegate {
 
 extension ListeViewController: UITableViewDataSource {
 
-    
-    
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1;
     }
@@ -67,7 +47,5 @@ extension ListeViewController: UITableViewDataSource {
         return cell
         
     }
-    
-    
     
 }

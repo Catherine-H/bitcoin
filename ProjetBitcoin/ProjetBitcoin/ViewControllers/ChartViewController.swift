@@ -21,13 +21,10 @@ class ChartViewController: UIViewController {
         axisFormat = self
         self.title = "Cours du Bitcoin"
         updateGraph()
-        
-        // Do any additional setup after loading the view.
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func updateGraph() {
@@ -38,8 +35,6 @@ class ChartViewController: UIViewController {
             return false
         }
         
-        //priceModels.sort { $0.currentDate! > $1.currentDate! }
- 
         for priceModel in priceModels {
             if let date = priceModel.currentDate {
                 let doubleDate = date.timeIntervalSince1970
@@ -53,17 +48,14 @@ class ChartViewController: UIViewController {
                 let dateString = formatter.string(from: date)
                 print(dateString)
                 dateFormater.append(dateString)
-                
-                
             }
         }
         
-        let line1 = LineChartDataSet(values: lineChartEntry, label: "Number")
+        let line1 = LineChartDataSet(values: lineChartEntry, label: "Valeur du Bitcoin")
         line1.colors = [NSUIColor.blue]
         let data = LineChartData()
         data.addDataSet(line1)
         chtChart.data = data
-        //chtChart.xAxis.valueFormatter = IndexAxisValueFormatter(values: dateFormater)
         chtChart.xAxis.valueFormatter = axisFormat
         chtChart.xAxis.labelRotationAngle = -45.0
         line1.drawFilledEnabled = true

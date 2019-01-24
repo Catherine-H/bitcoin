@@ -9,31 +9,58 @@
 import UIKit
 
 class ViewController: UIViewController  {
-    @IBOutlet weak var datePicker1: UIDatePicker!
-    @IBOutlet weak var datePicker2: UIDatePicker!
-    @IBOutlet weak var pickerView: UIPickerView!
+    var currencyPickerView: UIPickerView = UIPickerView()
     @IBOutlet weak var listButton: UIButton!
     @IBOutlet weak var graphButton: UIButton!
     @IBOutlet weak var startSearch: UIButton!
     @IBOutlet weak var dateDebut: UITextField!
     @IBOutlet weak var dateFin: UITextField!
+    @IBOutlet weak var labelEndDate: UILabel!
+    @IBOutlet weak var labelMoney: UILabel!
+    @IBOutlet weak var textFieldMoney: UITextField!
     
     var currency: [String] = []
     var priceModels: [PriceModel] = []
     var selectedDate1 = Date()
     var selectedDate2 = Date()
-    var dateString1: String = "2018-12-12"
-    var dateString2: String = "2019-01-21"
-    var money : String = "AED"
+    var dateString1: String = ""
+    var dateString2: String = ""
+    var money : String = ""
 
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        pickerView.delegate = self
-        pickerView.dataSource = self
+        currencyPickerView.delegate = self
+        currencyPickerView.dataSource = self
+        textFieldMoney.inputView = currencyPickerView
         listButton.alpha = 0
         graphButton.alpha = 0
+        dateFin.alpha = 0
+        labelEndDate.alpha = 0
+        labelMoney.alpha = 0
+        textFieldMoney.alpha = 0
+        startSearch.alpha = 0
+        
+        startSearch.backgroundColor = .clear
+        startSearch.layer.cornerRadius = 5
+        startSearch.layer.borderWidth = 1
+        startSearch.layer.borderColor = UIColor.gray.cgColor
+        startSearch.backgroundColor = UIColor.gray
+        startSearch.tintColor = UIColor.white
+        
+        listButton.backgroundColor = .clear
+        listButton.layer.cornerRadius = 5
+        listButton.layer.borderWidth = 1
+        listButton.layer.borderColor = UIColor.gray.cgColor
+        listButton.backgroundColor = UIColor.gray
+        listButton.tintColor = UIColor.white
+        
+        graphButton.backgroundColor = .clear
+        graphButton.layer.cornerRadius = 5
+        graphButton.layer.borderWidth = 1
+        graphButton.layer.borderColor = UIColor.gray.cgColor
+        graphButton.backgroundColor = UIColor.gray
+        graphButton.tintColor = UIColor.white
+        
         self.title = "Selection de dates"
         
         ApiCall.GetCurrencyCurrency {[weak self](response) in
@@ -42,14 +69,12 @@ class ViewController: UIViewController  {
                 do{
                     let decoder = JSONDecoder()
                     let result = try decoder.decode([CurrencyModel].self, from : data)
-                    //print(currency[1].currency)
                     for value in result{
                         if let currency = value.currency {
                             self?.currency.append(currency)
                         }
-                       // print(self?.currency)
                     }
-                    self?.pickerView.reloadAllComponents()
+                    self?.currencyPickerView.reloadAllComponents()
                 }catch (let error){
                    print(error.localizedDescription)
                 }
@@ -58,16 +83,12 @@ class ViewController: UIViewController  {
                 print(error.localizedDescription)
             }
         }
-    
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
-
-    
     @IBAction func tapDown(_ sender: UITextField) {
         let datePickerView1: UIDatePicker = UIDatePicker()
         datePickerView1.datePickerMode = UIDatePickerMode.date
@@ -80,6 +101,8 @@ class ViewController: UIViewController  {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         dateString1 = dateFormatter.string(from: sender.date)
         dateDebut.text = dateString1
+        dateFin.alpha = 1
+        labelEndDate.alpha = 1
     }
 
     @IBAction func tapDown2(_ sender: UITextField) {
@@ -94,30 +117,11 @@ class ViewController: UIViewController  {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         dateString2 = dateFormatter.string(from: sender.date)
         dateFin.text = dateString2
+        labelMoney.alpha = 1
+        textFieldMoney.alpha = 1
     }
-    
-
-    /*@IBAction func valueChangedDatePicker1(_ sender: Any) {
-        datePicker1.datePickerMode = UIDatePickerMode.date
-        selectedDate1 = datePicker1.date
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        dateString1 = formatter.string(from: selectedDate1)
-        
-        print("début" , dateString1)
-    }
-    
-    @IBAction func valueChangedDatePicker2(_ sender: Any) {
-        datePicker2.datePickerMode = UIDatePickerMode.date
-        selectedDate2=datePicker2.date
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        dateString2 = formatter.string(from: selectedDate2)
-        print("fin" , dateString2)
-    }*/
-    
+ 
     @IBAction func tapListButton(_ sender: Any) {
-        
         self.performSegue(withIdentifier: "showListe", sender: priceModels)
     }
     
@@ -129,15 +133,12 @@ class ViewController: UIViewController  {
                     ListeViewController {
                     destinationDetailVC.priceModels = priceModels
                 }
-                
                 break
             case "showChart":
-                //priceModels.sort { $0.currentDate! > $1.currentDate! }
                 if let destinationDetailVC = segue.destination as?
                     ChartViewController {
                     destinationDetailVC.priceModels = priceModels
                 }
-                
                 break
             default:
                 break
@@ -155,6 +156,7 @@ class ViewController: UIViewController  {
         ApiCall.getListByDateAndMoney(param: parameters) {[weak self] (result) in
             switch result {
             case .success(let dataAsJson):
+                self?.view.endEditing(true)
                 self?.listButton.alpha = 1
                 self?.graphButton.alpha = 1
                 //cast en dictionnaire
@@ -176,15 +178,11 @@ class ViewController: UIViewController  {
                             }
                         }
                         if arrayOfPriceModels.count > 0 {
-                            //On a des price models de parsés, on peut continuer
+                            //On a des prices models de parsés, on peut continuer
                             self?.priceModels = arrayOfPriceModels
                         }
-                        
                     }
-                    
-                    
                 }
-                
                 break
             case .failure(let error):
                 print(error.localizedDescription)
@@ -210,8 +208,12 @@ extension ViewController: UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return currency[row]
     }
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         money = currency[row]
+        textFieldMoney.text = money
+        startSearch.alpha = 1
         print(money)
     }
+
 }
